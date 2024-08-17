@@ -1,0 +1,16 @@
+services:
+  haproxy:
+    image: haproxy:lts-alpine
+    container_name: haproxy
+    hostname: haproxy
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.3.8.21
+    container_name: clickhouse
+    hostname: clickhouse
+    restart: always
